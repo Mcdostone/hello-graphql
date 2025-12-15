@@ -1,0 +1,26 @@
+.idea
+target
+classes
+logs
+extracts
+src/generated
+src/main/resources/public
+src/main/resources/application-tdv2.yml
+src/main/resources/certificats
+/prometheus_data/
+/grafana/data/
+certificats
+.bsp
+*/.DS_Store
+.DS_Store
+certificates
+# Ignore Gradle project-specific cache directory
+.gradle
+certificates
+
+# Ignore Gradle build output directory
+build
+.env
+env
+
+bin

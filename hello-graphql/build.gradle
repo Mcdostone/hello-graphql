@@ -1,0 +1,30 @@
+
+plugins {
+    id("com.netflix.dgs.codegen") version "8.3.0"
+    id("maven-publish")
+    id("java")
+}
+group = 'io.hello'
+
+repositories {
+    mavenCentral()
+}
+
+
+generateJava{
+    schemaPaths = ["${projectDir}/src/main/resources/schema"] // List of directories containing schema files
+    packageName = 'io.hello' // The package name to use to generate sources
+    generateClientv2 = true // Enable generating the type safe query API
+    generateDataTypes = true
+    language = "java"
+    typeMapping = [
+            "Year": "java.lang.Integer"
+    ]
+}
+
+
+dependencies {
+    implementation(platform('com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:11.0.0'))
+    implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars")
+    implementation('com.netflix.graphql.dgs:graphql-dgs-client:10.2.3') {}
+}

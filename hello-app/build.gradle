@@ -1,0 +1,49 @@
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version '3.5.8'
+  id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+
+
+dependencyManagement {
+    imports {
+        mavenBom "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:10.4.0"
+    }
+}
+
+
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:3.3.5")
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'com.netflix.graphql.dgs:dgs-starter'
+    implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars")
+    implementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter'
+    implementation 'com.netflix.graphql.dgs.codegen:graphql-dgs-codegen-core:8.3.0'
+    implementation 'com.netflix.graphql.dgs.codegen:graphql-dgs-codegen-client-core:5.1.17'
+    implementation files("../hello-graphql/build/libs/hello-graphql-1.0.0.jar")
+}

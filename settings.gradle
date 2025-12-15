@@ -1,0 +1,6 @@
+rootProject.name = 'hello-app'
+
+rootProject.name = 'hello'
+include 'hello-graphql'
+include 'hello-app'
+
